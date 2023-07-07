@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+::selection {
+    background-color: #343a50;
+}
+body {
+    background-image: url(images/header-background.jpg);
+    background-size: cover;
+}
+
+.spacer {
+    height: 25vh;
+}
+
+.input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.input-group {
+    width: 60vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    font-size: 100;
+    background: #343a5060;
+    border-radius: 10px;
+}
+
+input {
+    width: calc(60vw - 8vh);
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    padding-left: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+    width: 8vh;
+    font-size: 24px;
+    color: whitesmoke;
+    background: transparent;
+    border: none;
+    transition: 0.5s;
+    border-radius: 0 10px 10px 0px;
+}
+
+button:hover {
+    color: rgb(213, 187, 42);
+    background-color: #343a50;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+
+}
+
+.container {
+    text-align: center;
+}
+
+#result {
+    background: transparent;
+    text-align: center;
+    margin: 18vh 0;
+    font-size: 48px;
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
