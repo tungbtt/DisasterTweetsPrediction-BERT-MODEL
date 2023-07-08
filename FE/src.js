@@ -12,20 +12,21 @@ function type() {
 async function onSubmit() {
     const currentText = document.querySelector("#auto-type");
     currentText.innerHTML = '';
-    text = inputTxt.value;
 
-    let myObject = await fetch(`http://localhost:5000/predict?link="${text}"`);
+    let text = String(inputTxt.value);
+    let myObject = await fetch(`http://localhost:5000/predict?s=${text}`);
     let response = await myObject.text();
 
     if (response === 'YES') {
-        resultTxt = "Your tweet is about REAL disasters."
+        resultTxt = "Your tweet is about REAL disasters.";
     } else if (response == 'NO') {
-        resultTxt = "Your tweet is not about disasters."
+        resultTxt = "Your tweet is not about disasters.";
     } else {
-        resultTxt = "Something went wrong :(("
+        resultTxt = response;
     }
     type();
 }
+
 const inputTxt = document.querySelector(".inputTxt")
 const submitBtn = document.querySelector(".btnSearch")
 
