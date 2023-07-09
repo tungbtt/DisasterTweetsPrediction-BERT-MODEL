@@ -10,22 +10,27 @@
 </head>
 
 <body>
-    <div class="container">
-
-        <div class="spacer"></div>
-
-        <div class="input-section">
-            <div class="input-group">
-                <input class="inputTxt" placeholder="Tell me your tweet..."></input>
-                <button class="btnSearch" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-
-        <div id="result">
-            <span id="auto-type"></span>
-        </div>
+    <div class="title">Natural Language Processing with Disaster Tweets</div>
+    <div class="input-container">
+        <div class="input-group">
+            <input id="input" placeholder="Tell me tweet link"></input>
+            <button id="submit" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
+
+    <div class="your-tweet"><span>Your Tweet</span></div>
+    <div class="tweet-container">
+        <div class="tweet-group">
+            <div class="loading" id="tweet-loading"><div></div><div></div><div></div><div></div></div>
+            <p id="tweet"></p>
+        </div>
+    </div>
+    <div class="result-container">
+        <div class="loading" id="result-loading"><div></div><div></div><div></div><div></div></div>
+        <span id="result"></span>
+    </div>
+    </div>
+
     <script src="src.js"></script>
 </body>
 

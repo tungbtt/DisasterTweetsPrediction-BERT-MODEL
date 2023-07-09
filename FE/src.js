@@ -1,40 +1,84 @@
 var resultTxt = "";
+const inputEle = document.querySelector("#input")
+const submitBtn = document.querySelector("#submit")
+const tweetLoader = document.querySelector("#tweet-loading");
+const tweetEle = document.querySelector("#tweet");
+const resultEle = document.querySelector("#result");
+const resultLoader = document.querySelector("#result-loading");
+
 
 function type() {
-    const currentText = document.querySelector("#auto-type").textContent;
-
+    const currentText = resultEle.textContent;
     if (currentText.length < resultTxt.length) {
-        document.querySelector("#auto-type").textContent += resultTxt[currentText.length];
+        resultEle.textContent += resultTxt[currentText.length];
         setTimeout(type, 80);
     }
 }
 
 async function onSubmit() {
-    const currentText = document.querySelector("#auto-type");
-    currentText.innerHTML = '';
+    inputEle.select();
+    resultEle.innerHTML = '';
+    tweetEle.innerHTML = '';
 
-    let text = String(inputTxt.value);
-    let myObject = await fetch(`http://localhost:5000/predict?s=${text}`);
-    let response = await myObject.text();
+    let inputTxt = String(inputEle.value);
+    tweetLoader.classList.add("display");
 
-    if (response === 'YES') {
-        resultTxt = "Your tweet is about REAL disasters.";
-    } else if (response == 'NO') {
-        resultTxt = "Your tweet is not about disasters.";
+    let response = await fetch(`http://127.0.0.1:5000/get?link=${inputTxt}`);
+
+    
+    let tweet;
+    if (response.ok) {
+        tweet = await response.text();
+        if (tweet === '<NULL>') {
+            tweet = 'Something went wrong with your link. Please try again!'
+            tweetEle.style.color = '#d00000';
+            tweetLoader.classList.remove("display");
+            tweetEle.innerHTML = tweet;
+            return;
+        } else {
+            tweetEle.style.color = '#c0c0c0';
+            tweetLoader.classList.remove("display");
+            tweetEle.innerHTML = tweet;
+        }
     } else {
-        resultTxt = response;
+        tweet = 'Can not get tweet. Please try again!';
+        tweetEle.style.color = '#d00000';
+        tweetLoader.classList.remove("display");
+        tweetEle.innerHTML = tweet;
+        return
     }
-    type();
-}
+    
+    resultLoader.classList.add("display");
+    response = await fetch(`http://127.0.0.1:5000/predict?tweet=${tweet}`);
 
-const inputTxt = document.querySelector(".inputTxt")
-const submitBtn = document.querySelector(".btnSearch")
+    let result;
+    if (response.ok) {
+        result = await response.text();
+        resultEle.style.color = '#f5f5f5';
+        if (result === 'YES') {
+            document.body.classList.add("disasters");
+            resultTxt = "Your tweet is about REAL disasters.";
+        } else if (result === 'NO') {
+            document.body.classList.remove("disasters");
+            resultTxt = "Your tweet is not about disasters.";
+        } else {
+            document.body.classList.remove("disasters");
+            resultTxt = "Can not get result!";
+        }
+        resultLoader.classList.remove("display");
+        type();
+    } else {
+        result = 'Can not get result. Please try again!';
+        resultEle.style.color = '#fab6c9';
+        resultLoader.classList.remove("display");
+        resultEle.innerHTML = result;
+    }
+}
 
 submitBtn.addEventListener('click', onSubmit)
 
-inputTxt.addEventListener("keypress", function (event) {
+inputEle.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         onSubmit();
-        inputTxt.select();
     }
 });

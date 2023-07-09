@@ -11,7 +11,7 @@ class GetTweet:
     class __impl:
         def __init__(self, usr, pas) -> None:
             self.option = Options()
-            # chrome_options.add_argument("--headless")  # Chạy ở chế độ ẩn
+            self.option.add_argument("--headless")  # Chạy ở chế độ ẩn
             self.username = usr
             self.password = pas
             self.start_driver()

@@ -1,22 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald:wght@500&display=swap');
+
 
 ::selection {
     background-color: #343a50;
 }
+
 body {
-    background-image: url(images/header-background.jpg);
+    background-image: url(images/normal-background.jpg);
     background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+    transition: 3s;
 }
 
-.spacer {
-    height: 25vh;
+body.disasters {
+    background-image: url(images/disasters-background.jpg);
 }
 
-.input-section {
+.title {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+    max-height: 50px;
+    overflow: hidden;
+    margin: 7vh 0;
+}
+
+.input-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
+    margin-bottom: 2vh;
 }
 
 .input-group {
@@ -29,46 +45,157 @@ body {
     border-radius: 10px;
 }
 
-input {
+#input {
     width: calc(60vw - 8vh);
     background: transparent;
     border: none;
     font-size: 24px;
-    color: white;
+    color: #e0e0e0;
     padding-left: 15px;
     font-family: 'Open Sans', sans-serif;
 }
 
-button {
+#input:focus {
+    outline: none;
+}
+
+#submit {
     width: 8vh;
     font-size: 24px;
-    color: whitesmoke;
+    color: #a0a0a0;
     background: transparent;
     border: none;
     transition: 0.5s;
     border-radius: 0 10px 10px 0px;
 }
 
-button:hover {
-    color: rgb(213, 187, 42);
+#submit:hover {
+    color: #f0f0f0;
     background-color: #343a50;
 }
 
-textarea:focus, input:focus{
-    outline: none;
-
+.your-tweet {
+    color: #c0c0c0;
+    margin: auto;
+    width: 60vw;
+    height: 4vh;
 }
 
-.container {
-    text-align: center;
+.your-tweet span {
+    padding-left: 15px;
 }
 
-#result {
+.tweet-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.tweet-group {
+    color: #c0c0c0;
+    background: #1e222e30;
+    border: 2px solid #a0a0a0;
+    border-radius: 10px;
+    width: 60vw;
+    text-align: justify;
+    font-size: 24px;
+    width: 60vw;
+    height: 20vh;
+    word-wrap: break-word;
+    overflow: auto;
+    scrollbar-width: 10px;
+}
+
+#tweet {
+    padding: 5px 15px;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #343a50;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b4052;
+}
+
+.loading {
+    width: 80px;
+    height: 80px;
+}
+
+.loading div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.loading div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.loading div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.loading div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#tweet-loading {
+    margin: auto;
+    margin-top: 5vh;
+    display: none;
+}
+
+#tweet-loading.display {
+    display: flex;
+}
+
+
+.result-container {
     background: transparent;
     text-align: center;
-    margin: 18vh 0;
+    margin: 10vh 0;
     font-size: 48px;
     color: whitesmoke;
     font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
 }
 
+#result-loading {
+    display: flex;
+    margin: auto;
+    margin-top: 5vh;
+    display: none;
+}
+
+#result-loading.display {
+    display: flex;
+}
