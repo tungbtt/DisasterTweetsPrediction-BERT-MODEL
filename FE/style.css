@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald:wght@500&display=swap');
 
+
 ::selection {
     background-color: #343a50;
 }
@@ -40,7 +41,7 @@ body.disasters {
     display: flex;
     justify-content: space-between;
     font-size: 100;
-    background: #343a5080;
+    background: #343a5060;
     border-radius: 10px;
 }
 
@@ -92,7 +93,7 @@ body.disasters {
 
 .tweet-group {
     color: #c0c0c0;
-    background: #1e222e80;
+    background: #1e222e30;
     border: 2px solid #a0a0a0;
     border-radius: 10px;
     width: 60vw;

@@ -19,7 +19,7 @@ class GetTweet:
         
 
         def start_driver(self):
-            self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=self.option)
+            self.driver = webdriver.Chrome(options=self.option)
             sleep(3)
 
         def login_twitter_account(self):
