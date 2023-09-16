@@ -9,7 +9,7 @@ File link: https://drive.google.com/file/d/1FtpjEljGMg0UusjyAUrv1-OfwbFLRFnp/vie
 python app.py
 '''
 
-2. Access the FE directory and run the client:
+3. Access the FE directory and run the client:
 
 
 Utilize the 'Live Server' extension in vscode and 'go live' with the file index.html ./
